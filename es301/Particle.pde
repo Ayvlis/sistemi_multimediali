@@ -24,6 +24,7 @@ class Particle {
   public void update(float timeElapsed) {
     this.speed = speed.add(acceleration);
     this.position = position.add(PVector.mult(speed,timeElapsed));
+    //this.position = position.add(speed);
   }
   
     public void applyForce(PVector force) {

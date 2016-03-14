@@ -6,7 +6,7 @@ void setup() {
 
 void draw() {
   translate(width/2, height/2);
-  rotate(x);
+  rotate(radians(x));
   rectMode(CENTER);
   rect(0, 0, 50, 50);
 }

@@ -24,6 +24,6 @@ void draw(){
   p.applyForce(gravity);
   p.applyForce(wind);
   p.bounce();
-  p.update(timeElapsed/1000.0);
+  p.update(timeElapsed);
   p.display();
 }

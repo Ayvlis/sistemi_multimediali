@@ -23,8 +23,9 @@ class Particle {
   
   public void update(float timeElapsed) {
     this.speed = this.speed.add(this.acceleration);
-    this.position = this.position.add(PVector.mult(this.speed,timeElapsed));
+    this.position = this.position.add(PVector.mult(this.speed,timeElapsed/1000.0));
     //this.position = position.add(speed);
+    this.acceleration.mult(0);
   }
   
     public void applyForce(PVector force) {
@@ -74,7 +75,7 @@ public void bounce() {
     // this.acceleration = new PVector(0,0);
     float attractedMass = this.mass;
     float attractorMass = particle.mass;
-    float G = 1;
+    float G = 3;
     PVector tempPosition = particle.position.copy();
     PVector distance = tempPosition.sub(this.position);
     float rSquared = distance.mag()*distance.mag();
@@ -84,10 +85,13 @@ public void bounce() {
     force = R.mult((G*attractedMass*attractorMass)/rSquared);
     System.out.println("force: "+force);
 
-    forceAcceleration = PVector.div(force, this.mass);
+   /* forceAcceleration = PVector.div(force, this.mass);
     System.out.println("force acceleration: "+forceAcceleration);
     this.acceleration.add(forceAcceleration);
-    System.out.println("acceleration: "+this.acceleration);
+    System.out.println("acceleration: "+this.acceleration); */
+    
+    PVector f  = PVector.div(force,mass);
+    acceleration.add(f);
     
     //this.speed = this.speed.add(this.acceleration);
     //this.position = this.position.add(this.speed);

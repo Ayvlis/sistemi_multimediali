@@ -23,13 +23,14 @@ class Particle {
   
   public void update(float timeElapsed) {
     this.speed = speed.add(acceleration);
-    this.position = position.add(PVector.mult(speed,timeElapsed));
+    this.position = position.add(PVector.mult(speed,timeElapsed/1000.0));
     //this.position = position.add(speed);
+    this.acceleration.mult(0);
   }
   
     public void applyForce(PVector force) {
-    newAcceleration = force.div(mass);
-    acceleration.add(newAcceleration);
+    PVector f  = PVector.div(force,mass);
+    acceleration.add(f);
   }
   
     public void border() {

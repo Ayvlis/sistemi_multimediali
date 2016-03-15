@@ -18,10 +18,11 @@ class Triangle {
   }
   
     public void update(float timeElapsed) {
-    PVector target = p3.copy();
-    target.normalize();
-    target.mult(acceleration.mag());
-    this.velocity = this.velocity.add(target);
+    this.velocity = this.velocity.add(acceleration);
+   //PVector target = p3.copy();
+    //target.normalize();
+    //target.mult(velocity.mag());
+    //this.center = this.center.add(PVector.mult(target,timeElapsed/1000.0));
     this.center = this.center.add(PVector.mult(velocity,timeElapsed/1000.0));
     //this.position = position.add(speed);
     this.acceleration.mult(0);

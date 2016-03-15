@@ -1,4 +1,4 @@
-int x = 0;
+int rotation = 0;
 float previousTime;
 Triangle cucco;
 PVector wind;
@@ -20,8 +20,8 @@ void draw() {
   previousTime = millis();
   
   background(100, 100, 110);
+  rotate(radians(rotation));
   translate(cucco.center.x, cucco.center.y);
-  rotate(radians(x));
  
   cucco.update(timeElapsed);
   cucco.display();
@@ -30,9 +30,9 @@ void draw() {
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == RIGHT) {
-      x = x+10;
+      rotation += 1;
     } else if (keyCode == LEFT) {
-      x = x-10;
+      rotation -= 1;
     } 
   }
   if (key == 'z' ) {

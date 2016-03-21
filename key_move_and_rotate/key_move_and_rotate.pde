@@ -1,14 +1,13 @@
 int rotation = 0;
 float previousTime;
 Triangle cucco;
-PVector wind;
+PVector engine = new PVector(5,0);
 
 void setup() {
   size(1200, 800);
-  wind = new PVector(5,0);
   previousTime = 0;
     
-  PVector center = new PVector (100,height/2);
+  PVector center = new PVector (100,0);
   PVector velocity = new PVector (0,0);
   
   cucco = new Triangle(center, velocity);
@@ -20,9 +19,15 @@ void draw() {
   previousTime = millis();
   
   background(100, 100, 110);
+  pushMatrix();
+  translate(100,0);
   rotate(radians(rotation));
+  popMatrix();
+  line(-200,0, 200,0);
+  line(0,-200, 0,200);
   translate(cucco.center.x, cucco.center.y);
- 
+
+
   cucco.update(timeElapsed);
   cucco.display();
 }
@@ -36,6 +41,6 @@ void keyPressed() {
     } 
   }
   if (key == 'z' ) {
-      cucco.applyForce(wind);
+      cucco.applyForce(engine);
   }
 }

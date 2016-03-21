@@ -2,11 +2,9 @@ class Triangle {
   PVector center;  
   PVector velocity;
   PVector acceleration;
-  
-  PVector p1 = new PVector(center.x-30, center.y +30);
-  PVector p2 = new PVector(center.x-30, center.y -30);
-  PVector p3 = new PVector(center.x+50, center.y );
-    
+  PVector p1 = new PVector(-30, 30);
+  PVector p2 = new PVector(-30,-30);
+  PVector p3 = new PVector(50, 0 );
   
   public Triangle(PVector center, PVector velocity) {
     this.center = center;
@@ -14,7 +12,7 @@ class Triangle {
     this.acceleration = new PVector(0,0);
   }
   
-     public void applyForce(PVector force) {
+    public void applyForce(PVector force) {
     PVector f  = PVector.div(force,1);
     acceleration.add(f);
   }
@@ -31,10 +29,6 @@ class Triangle {
   }
   
   public void display() {
-   p1 = new PVector(center.x-30, center.y +30);
-   p2 = new PVector(center.x-30, center.y -30);
-   p3 = new PVector(center.x+50, center.y );
-
     triangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y); 
   }
 }

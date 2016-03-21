@@ -1,14 +1,24 @@
 int x = 0;
+Triangle cucco;
+float previousTime;
 
 void setup() {
   size(1200, 800);
+  PVector position = new PVector(0,0);
+  PVector velocity = new PVector(0,0); 
+  previousTime = 0;
+  cucco = new Triangle(position, velocity);
 }
 
 void draw() {
-  translate(width/2, height/2);
-  rotate(radians(x));
-  rectMode(CENTER);
-  rect(0, 0, 50, 50);
+  background(100, 100, 110);
+  translate(cucco.center.x, cucco.center.y);
+  rotate(radians(x));  
+  line(-200,0, 200,0);
+  line(0,-200, 0,200);
+  cucco.display();
+  
+
 }
 
 void keyPressed() {

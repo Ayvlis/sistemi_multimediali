@@ -19,10 +19,8 @@ void draw() {
   previousTime = millis();
   
   background(100, 100, 110);
-  pushMatrix();
-  translate(100,0);
+  translate(cucco.center.x, cucco.center.y);
   rotate(radians(rotation));
-  popMatrix();
   line(-200,0, 200,0);
   line(0,-200, 0,200);
   translate(cucco.center.x, cucco.center.y);

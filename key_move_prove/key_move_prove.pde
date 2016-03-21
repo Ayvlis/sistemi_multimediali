@@ -1,9 +1,8 @@
-int x = 0;
+int rotation = 0;
 float previousTime;
 Triangle cucco;
-float windx = 100;
-float windy = 400;
-PVector wind = new PVector(100,400);
+PVector engine = new PVector(5,0);
+PVector brake = new PVector(-5,0);
 
 /*void setup()
 {
@@ -34,7 +33,6 @@ void draw() {
 
 void setup() {
   size(1200, 800);
-  // wind = new PVector(5,0);
   PVector position = new PVector(0,0);
   PVector velocity = new PVector(0,0); 
   previousTime = 0;
@@ -48,20 +46,28 @@ void draw() {
   float timeElapsed = millis()-previousTime;
   previousTime = millis();
   background(100, 100, 110);
-  translate(wind.x, wind.y);
+    
+  translate(cucco.center.x, cucco.center.y);
+  rotate(radians(rotation));
   line(-200,0, 200,0);
   line(0,-200, 0,200);
   cucco.display();
-
- // 
+  cucco.update(timeElapsed);
 
 }
 
 void keyPressed() {
+   if (key == CODED) {
+    if (keyCode == RIGHT) {
+      rotation += 1;
+    } else if (keyCode == LEFT) {
+      rotation -= 1;
+    } 
+  }
   if (key == 'z' ) {
-      wind.x+=100;
+      cucco.applyForce(engine);
   }
   if (key == 'x' ) {
-      wind.x-=100;
+      cucco.applyForce(brake);
   }
 }

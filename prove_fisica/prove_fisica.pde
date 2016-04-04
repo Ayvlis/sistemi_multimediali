@@ -1,4 +1,4 @@
-Mascotte stivs;
+Mascotte mascotte;
 Particle[] particles = new Particle[10];
 PVector pos; 
 float d;
@@ -14,7 +14,7 @@ void setup() {
   d = 200;
   c = color(120,236,0);
   vel = new PVector(0,0);
-  stivs = new  Mascotte(pos, d, c, vel);
+  mascotte = new  Mascotte(pos, d, c, vel);
   for(int i=0; i<particles.length; i++) {
     posParticle = new PVector (random(width-dParticle/2), random(height-dParticle/2));
     dParticle = 50;
@@ -27,10 +27,10 @@ void draw() {
   textSize(32);
   text(counter, 10, 30); 
   for(int i=0; i<particles.length; i++) {
-    if (stivs.position.x<particles[i].position.x+particles[i].diameter/2 &&
-        stivs.position.x>particles[i].position.x-particles[i].diameter/2 &&
-        stivs.position.y<particles[i].position.y+particles[i].diameter/2 &&
-        stivs.position.y>particles[i].position.y-particles[i].diameter/2) {
+    if (mascotte.position.x<particles[i].position.x+particles[i].diameter/2 &&
+        mascotte.position.x>particles[i].position.x-particles[i].diameter/2 &&
+        mascotte.position.y<particles[i].position.y+particles[i].diameter/2 &&
+        mascotte.position.y>particles[i].position.y-particles[i].diameter/2) {
           particles[i] = new Particle(0, new PVector(0,0));
           counter--;
         }
@@ -38,24 +38,38 @@ void draw() {
   for(int i=0; i<particles.length; i++) {
     particles[i].display();
   }    
-  stivs.update();
+  mascotte.update();
   if (counter==0) {
-    textAlign(CENTER, CENTER);
+    textAlign(CENTER, TOP);
     text("You Won", width/2, height/2);
-    stivs = new  Mascotte(new PVector(width/2, height/2-stivs.diameter/3), stivs.diameter, stivs.c, new PVector(0,0));
+    textAlign(CENTER, BOTTOM);
+    text("Click anywhere to play again.", width/2, height);
+    mascotte = new  Mascotte(new PVector(width/2, height/2-mascotte.diameter/3), mascotte.diameter, mascotte.c, new PVector(0,0));
   }
   }
   
 void keyPressed() {
    if (key == CODED) {
     if (keyCode == RIGHT) {
-      stivs.applyForce(new PVector(10,0));
+      mascotte.applyForce(new PVector(10,0));
     } else if (keyCode == LEFT) {
-      stivs.applyForce(new PVector(-10,0));
+      mascotte.applyForce(new PVector(-10,0));
     } else if (keyCode == UP) {
-      stivs.applyForce(new PVector(0,-10));
+      mascotte.applyForce(new PVector(0,-10));
     } else if (keyCode == DOWN) {
-      stivs.applyForce(new PVector(0,10));
+      mascotte.applyForce(new PVector(0,10));
     } 
   } 
 } 
+
+void mousePressed() {
+  if (counter==0) {
+    for(int i=0; i<particles.length; i++) {
+    posParticle = new PVector (random(width-dParticle/2), random(height-dParticle/2));
+    dParticle = 50;
+    particles[i] = new Particle(dParticle, posParticle);
+    }
+    counter = particles.length;
+  }
+}
+    

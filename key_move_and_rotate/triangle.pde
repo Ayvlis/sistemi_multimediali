@@ -25,10 +25,15 @@ class Triangle {
     //this.center = this.center.add(PVector.mult(target,timeElapsed/1000.0));
     this.center = this.center.add(PVector.mult(velocity,timeElapsed/1000.0));
     //this.position = position.add(speed);
-    this.acceleration.mult(0);
+   // this.acceleration.mult(0);
+    
   }
   
   public void display() {
     triangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y); 
+    line(-200,0, 200,0);
+    line(0,-200, 0,200);
+    translate(cucco.center.x, cucco.center.y);
+    rotate(radians(rotation));
   }
 }

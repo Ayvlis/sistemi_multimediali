@@ -1,3 +1,4 @@
+ 
 int rotation = 0;
 float previousTime;
 Triangle cucco;
@@ -19,13 +20,7 @@ void draw() {
   previousTime = millis();
   
   background(100, 100, 110);
-  translate(cucco.center.x, cucco.center.y);
-  rotate(radians(rotation));
-  line(-200,0, 200,0);
-  line(0,-200, 0,200);
-  translate(cucco.center.x, cucco.center.y);
-
-
+  
   cucco.update(timeElapsed);
   cucco.display();
 }

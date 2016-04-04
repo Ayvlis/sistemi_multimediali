@@ -17,13 +17,15 @@ class Mascotte {
     this.mass = this.diameter/10;
   }
   
+  public void rotateObject(float degrees) {
+   float radians = radians(degrees);
+   rotate(radians);
+  }
+  
   public void applyForce(PVector force) {
     PVector temp = this.velocity.copy();
     this.acceleration = force.div(this.mass); 
-    System.out.println("temp "+temp.x +" "+ temp.y);
-    System.out.println("velocity " +velocity.x +" "+ velocity.y);
     this.velocity.add(acceleration);
-    System.out.println("temp "+temp.x +" "+ temp.y);
     if (this.velocity.x>10 || this.velocity.y>10 || this.velocity.x<-10 || this.velocity.y<-10) {
       this.velocity = temp;
     }
@@ -32,7 +34,7 @@ class Mascotte {
   
   public void bounce() {
     if(this.position.x >= width-r/2 || position.x <=r/2) {
-      this.velocity.x*=(-1);  
+      this.velocity.x*=(-1); 
     }
     if(this.position.y >= height-r/2 || this.position.y <=r/2) {
       this.velocity.y*=(-1); 
@@ -55,7 +57,8 @@ class Mascotte {
   public void update() {
    this.position.add(this.velocity);
    this.display();
-   this.bounce();
+   // this.bounce();
+   this.checkBorders();
   }
 
   public void display() { 

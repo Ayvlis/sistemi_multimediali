@@ -18,8 +18,25 @@ class Mascotte {
   }
   
   public void applyForce(PVector force) {
-    this.acceleration = force.div(this.mass);
-    this.velocity.add(this.acceleration);
+    PVector temp = this.velocity.copy();
+    this.acceleration = force.div(this.mass); 
+    System.out.println("temp "+temp.x +" "+ temp.y);
+    System.out.println("velocity " +velocity.x +" "+ velocity.y);
+    this.velocity.add(acceleration);
+    System.out.println("temp "+temp.x +" "+ temp.y);
+    if (this.velocity.x>10 || this.velocity.y>10 || this.velocity.x<-10 || this.velocity.y<-10) {
+      this.velocity = temp;
+    }
+    
+  }
+  
+  public void bounce() {
+    if(this.position.x >= width-r/2 || position.x <=r/2) {
+      this.velocity.x*=(-1);  
+    }
+    if(this.position.y >= height-r/2 || this.position.y <=r/2) {
+      this.velocity.y*=(-1); 
+    }
   }
   
   public void checkBorders() {
@@ -37,8 +54,8 @@ class Mascotte {
   
   public void update() {
    this.position.add(this.velocity);
-    this.display();
-    this.checkBorders();
+   this.display();
+   this.bounce();
   }
 
   public void display() { 

@@ -9,7 +9,7 @@ PVector posParticle;
 int counter = particles.length;
 
 void setup() {
-  size(1200, 525);
+  size(1200, 700);
   pos = new PVector (width/2, height/2);
   d = 200;
   c = color(120,236,0);
@@ -65,9 +65,9 @@ void keyPressed() {
 void mousePressed() {
   if (counter==0) {
     for(int i=0; i<particles.length; i++) {
-    posParticle = new PVector (random(width-dParticle/2), random(height-dParticle/2));
-    dParticle = 50;
-    particles[i] = new Particle(dParticle, posParticle);
+      posParticle = new PVector (random(width-dParticle/2), random(height-dParticle/2));
+      dParticle = 50;
+      particles[i] = new Particle(dParticle, posParticle);
     }
     counter = particles.length;
   }

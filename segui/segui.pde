@@ -10,6 +10,10 @@ float dParticle;
 PVector posParticle;
 int counter = numberOfParticles;
 int level = 1;
+boolean eyesMoving = false;
+int eyesLifeTime = 0;
+boolean blinking = false;
+int blinkLifeTime = 0;
 
 void setup() {
   size(1200, 525);
@@ -35,6 +39,7 @@ void draw() {
     mascotte = new  Mascotte(new PVector(width/2, height/2-mascotte.diameter/3), mascotte.diameter, mascotte.c, new PVector(0, 0));
   } else {
     textSize(32);
+    fill(50, 50, 0);
     text(counter, 40, 40);
     textAlign(RIGHT, BOTTOM);
     text("level "+level, width, 40);
@@ -43,6 +48,7 @@ void draw() {
         mascotte.position.x>particles[i].position.x-particles[i].diameter/2 &&
         mascotte.position.y<particles[i].position.y+particles[i].diameter/2 &&
         mascotte.position.y>particles[i].position.y-particles[i].diameter/2) {
+        blinking = true;
         particles[i] = new Particle(0, new PVector(0, 0));
         counter--;
       }
@@ -52,11 +58,28 @@ void draw() {
     }
   }
   mascotte.update();
+
+  if (eyesMoving) {    
+    eyesLifeTime++;
+    if (eyesLifeTime == 30) {
+      eyesMoving = false;
+      eyesLifeTime=0;
+    }
+  }
+  
+  if (blinking) {    
+    blinkLifeTime++;
+    if (blinkLifeTime == 10) {
+      blinking = false;
+      blinkLifeTime=0;
+    }
+  }
 }
 
 
 void keyPressed() {
   if (key == CODED) {
+    eyesMoving = true;
     if (keyCode == RIGHT) {
       mascotte.applyForce(new PVector(10, 0));
     } else if (keyCode == LEFT) {

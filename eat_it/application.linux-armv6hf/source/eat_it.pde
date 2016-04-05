@@ -10,6 +10,15 @@ float dParticle;
 PVector posParticle;
 int counter = numberOfParticles;
 int level = 1;
+boolean eyesMoving = false;
+int eyesMovingLifeTime = 30;
+int randomBlink = int(random(100, 200));
+int randomBlinkCounter = 0;
+boolean blinking = false;
+int blinkLifeTime = 10;
+boolean eating = false;
+int eatLifeTime = 15;
+
 
 void setup() {
   size(1200, 525);
@@ -26,8 +35,9 @@ void setup() {
 }
 
 void draw() {
-  background(200);
+  background(100);
   if (counter==0) {
+    fill(0);
     textAlign(CENTER, TOP);
     text("You Won", width/2, height/2);
     textAlign(CENTER, BOTTOM);
@@ -35,6 +45,7 @@ void draw() {
     mascotte = new  Mascotte(new PVector(width/2, height/2-mascotte.diameter/3), mascotte.diameter, mascotte.c, new PVector(0, 0));
   } else {
     textSize(32);
+    fill(0);
     text(counter, 40, 40);
     textAlign(RIGHT, BOTTOM);
     text("level "+level, width, 40);
@@ -43,6 +54,7 @@ void draw() {
         mascotte.position.x>particles[i].position.x-particles[i].diameter/2 &&
         mascotte.position.y<particles[i].position.y+particles[i].diameter/2 &&
         mascotte.position.y>particles[i].position.y-particles[i].diameter/2) {
+        eating = true;
         particles[i] = new Particle(0, new PVector(0, 0));
         counter--;
       }
@@ -51,12 +63,43 @@ void draw() {
       particles[i].display();
     }
   }
-  mascotte.update();
+  mascotte.update(eyesMoving);
+
+  if (eyesMoving) {    
+    eyesMovingLifeTime--;
+    if (eyesMovingLifeTime == 0) {
+      eyesMoving = false;
+      eyesMovingLifeTime=30;
+    }
+  }
+  
+  if (blinking) {    
+    blinkLifeTime--;
+    if (blinkLifeTime == 0) {
+      blinking = false;
+      blinkLifeTime=10;
+    }
+  } else {
+    randomBlinkCounter++;
+    if (randomBlinkCounter == randomBlink) {
+      blinking = true;
+      randomBlink = int(random(100,200));
+      randomBlinkCounter = 0;
+    }
+  }
+  if (eating) {    
+   eatLifeTime--;
+    if (eatLifeTime == 0) {
+      eating = false;
+      eatLifeTime=15;
+    }
+  }
 }
 
 
 void keyPressed() {
   if (key == CODED) {
+    eyesMoving = true;
     if (keyCode == RIGHT) {
       mascotte.applyForce(new PVector(10, 0));
     } else if (keyCode == LEFT) {

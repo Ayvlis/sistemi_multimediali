@@ -1,5 +1,3 @@
-boolean white = false;
-
 void setup() {
   size(600,600);
 }

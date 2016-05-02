@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query xmlns:yahoo="http://www.yahooapis.com/v1/base.rng"
+    yahoo:count="1" yahoo:created="2016-04-19T11:41:09Z" yahoo:lang="en-us">
+    <results>
+        <channel>
+            <yweather:units
+                xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                distance="mi" pressure="in" speed="mph" temperature="F"/>
+            <title>Yahoo! Weather - Udine, FV, IT</title>
+            <link>http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-725383/</link>
+            <description>Yahoo! Weather for Udine, FV, IT</description>
+            <language>en-us</language>
+            <lastBuildDate>Tue, 19 Apr 2016 01:41 PM CEST</lastBuildDate>
+            <ttl>60</ttl>
+            <yweather:location
+                xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                city="Udine" country="Italy" region=" FV"/>
+            <yweather:wind
+                xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                chill="59" direction="45" speed="11"/>
+            <yweather:atmosphere
+                xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                humidity="46" pressure="1005.0" rising="0" visibility="16.1"/>
+            <yweather:astronomy
+                xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                sunrise="6:11 am" sunset="8:1 pm"/>
+            <image>
+                <title>Yahoo! Weather</title>
+                <width>142</width>
+                <height>18</height>
+                <link>http://weather.yahoo.com</link>
+                <url>http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif</url>
+            </image>
+            <item>
+                <title>Conditions for Udine, FV, IT at 12:00 PM CEST</title>
+                <geo:lat xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">46.06068</geo:lat>
+                <geo:long xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">13.2332</geo:long>
+                <link>http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-725383/</link>
+                <pubDate>Tue, 19 Apr 2016 12:00 PM CEST</pubDate>
+                <yweather:condition
+                    xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                    code="34" date="Tue, 19 Apr 2016 12:00 PM CEST"
+                    temp="26" text="Cloudy"/>
+                <yweather:forecast
+                    xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                    code="30" date="19 Apr 2016" day="Tue" high="68"
+                    low="52" text="Partly Cloudy"/>
+                <yweather:forecast
+                    xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                    code="30" date="20 Apr 2016" day="Wed" high="64"
+                    low="49" text="Partly Cloudy"/>
+                <yweather:forecast
+                    xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                    code="30" date="21 Apr 2016" day="Thu" high="64"
+                    low="50" text="Partly Cloudy"/>
+                <yweather:forecast
+                    xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                    code="28" date="22 Apr 2016" day="Fri" high="62"
+                    low="47" text="Mostly Cloudy"/>
+                <yweather:forecast
+                    xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                    code="11" date="23 Apr 2016" day="Sat" high="59"
+                    low="50" text="Showers"/>
+                <yweather:forecast
+                    xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                    code="39" date="24 Apr 2016" day="Sun" high="55"
+                    low="48" text="Scattered Showers"/>
+                <yweather:forecast
+                    xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                    code="28" date="25 Apr 2016" day="Mon" high="58"
+                    low="46" text="Mostly Cloudy"/>
+                <yweather:forecast
+                    xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                    code="11" date="26 Apr 2016" day="Tue" high="54"
+                    low="42" text="Showers"/>
+                <yweather:forecast
+                    xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                    code="11" date="27 Apr 2016" day="Wed" high="56"
+                    low="46" text="Showers"/>
+                <yweather:forecast
+                    xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0"
+                    code="11" date="28 Apr 2016" day="Thu" high="58"
+                    low="47" text="Showers"/>
+                <description>&lt;![CDATA[&lt;img src="http://l.yimg.com/a/i/us/we/52/34.gif"/&gt;
+&lt;BR /&gt;
+&lt;b&gt;Current Conditions:&lt;/b&gt;
+&lt;BR /&gt;Mostly Sunny
+&lt;BR /&gt;
+&lt;BR /&gt;
+&lt;b&gt;Forecast:&lt;/b&gt;
+&lt;BR /&gt; Tue - Partly Cloudy. High: 68Low: 52
+&lt;BR /&gt; Wed - Partly Cloudy. High: 64Low: 49
+&lt;BR /&gt; Thu - Partly Cloudy. High: 64Low: 50
+&lt;BR /&gt; Fri - Mostly Cloudy. High: 62Low: 47
+&lt;BR /&gt; Sat - Showers. High: 59Low: 50
+&lt;BR /&gt;
+&lt;BR /&gt;
+&lt;a href="http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-725383/"&gt;Full Forecast at Yahoo! Weather&lt;/a&gt;
+&lt;BR /&gt;
+&lt;BR /&gt;
+(provided by &lt;a href="http://www.weather.com" &gt;The Weather Channel&lt;/a&gt;)
+&lt;BR /&gt;
+]]&gt;</description>
+                <guid isPermaLink="false"/>
+            </item>
+        </channel>
+    </results>
+</query>
+

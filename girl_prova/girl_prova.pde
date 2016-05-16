@@ -11,9 +11,9 @@ void draw() {
   translate(width/2, height/3);
   
   /* head */
-  fill(255);
-  stroke(255);
   strokeWeight(0);
+  fill(200,100,100);
+  stroke(200,100,100);
   ellipse(0,0, d, d);
   fill(50);
   stroke(50);
@@ -21,7 +21,7 @@ void draw() {
   line(-r,0,-r,r);
   line(r,0,r,r);
   arc(0,0,d,d,PI,TWO_PI,CHORD);
-  stroke(255);
+  stroke(200,100,100);
   strokeWeight(0); 
   
   /* body */
@@ -36,19 +36,32 @@ void draw() {
   rect(0,3*dNeck/2, dBody, dBody);
     /* neck */  
     translate(0,-dBody/2);
-    fill(255);
-    stroke(255);
+    fill(200,100,100);
+    noStroke();
     rect(0,dNeck/2,dNeck,dNeck);
  
  /* arms */
-   /* left */
+   /* right */
  {
+   pushMatrix();
    translate( -dBody/2+r/7, 3*dNeck/2);
    fill(150,0,0);
    stroke(150,0,0);
    rotate(-3*QUARTER_PI/2);
    ellipse(0,0,r/3,r/3);
    rect(-dBody/2, 0, dBody, dNeck );
+   popMatrix();
+ }
+    /* left */
+ {
+   pushMatrix();
+   translate( dBody/2-r/7, 3*dNeck/2);
+   fill(150,0,0);
+   stroke(150,0,0);
+   rotate(11*QUARTER_PI/2);
+   ellipse(0,0,r/3,r/3);
+   rect(-dBody/2, 0, dBody, dNeck );
+   popMatrix();
  }
   
   

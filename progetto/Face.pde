@@ -10,24 +10,31 @@ class Face {
   PVector acceleration;
   
   public Face() {  
-  this(new PVector(width/2, height/2), 200, color(255,150,150), new PVector(0,0));
-  
+  this(new PVector(width/4,height/2), 200, color(360,32,68), new PVector(0,0));
   }
+
   public Face (PVector position, float d, color c, PVector vel) {
     this.position = position;
     this.diameter = d;
     this.r=d/2;
     this.c=c;
     this.velocity = vel;
-    this.mass = this.diameter/10;
-    this.acceleration = new PVector(0,0);
     this.r_1 = r*20/19;
+    this.mass = this.diameter*this.r_1/200;
+    this.acceleration = new PVector(0,0);
+    
   }
+  
+  public void setPosition(PVector position) {
+    this.position = position;
+  }
+    
   
   public void setMass(float newDiameter) {
     this.diameter = newDiameter;
-    this.mass = this.diameter/10;
     this.r_1=this.diameter/2;
+    this.mass = this.diameter*this.r_1/800;
+    
   }
   
   public float getDiameter() {
@@ -41,11 +48,18 @@ class Face {
 
   public void applyForce(PVector force) {
     PVector temp = this.velocity.copy();
+    temp = temp.mult(200/diameter);
     this.acceleration = force.div(this.mass); 
     this.velocity.add(acceleration);
-    if (this.velocity.x>10 || this.velocity.y>10 || this.velocity.x<-10 || this.velocity.y<-10) {
-      this.velocity = temp;
+    if (this.velocity.x>5000/diameter ||
+        this.velocity.y>5000/diameter ||
+        this.velocity.x<(-1)*5000/diameter ||
+        this.velocity.y<(-1)*5000/diameter) {
+          velocity = temp;
     }
+    
+    println(velocity);
+    
   }
 
   public void bounce() {
@@ -80,7 +94,7 @@ class Face {
   public void display(boolean blink, boolean eyes, boolean mouth) { 
 
     float newR = r/2;
-    fill(c);
+    fill(358,38,90);
     noStroke();
     rectMode(CENTER);
     /*translate(position.x, position.y);
@@ -99,8 +113,8 @@ class Face {
     translate(newR, 0);
     ellipse(diameter/5, 0, newR/1.5, newR/1.5); */
     ellipse(position.x, position.y, r_1, r);
-    fill(255);
-    if (bool) {
+    fill(0,0,100);
+    if (blink) {
       pushMatrix();
       translate(position.x +newR/2, position.y -newR/5);
       fill(0);
@@ -135,7 +149,7 @@ class Face {
       // ellipse(0, -newR/20, newR/3, newR/3);
       popMatrix();
       pushMatrix();
-      fill(255);
+      fill(0,0,100);
       translate(position.x -newR/2, position.y -newR/5);
       ellipse(0, 0, newR, newR);
       /*stroke(255, 255, 30, 200);

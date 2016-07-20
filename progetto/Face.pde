@@ -1,16 +1,16 @@
-class Face {
+ class Face {
 
-  PVector position;
-  float diameter;
-  float r;
-  float r_1;
-  color c; 
-  PVector velocity;
-  float mass;
-  PVector acceleration;
+  private PVector position;
+  private float diameter;
+  private float r;
+  private float r_1;
+  private color c; 
+  private PVector velocity;
+  private float mass;
+  private PVector acceleration;
   
   public Face() {  
-  this(new PVector(width/4,height/2), 200, color(360,32,68), new PVector(0,0));
+    this(new PVector(width/4,height/2), 200, color(360,32,68), new PVector(0,0));
   }
 
   public Face (PVector position, float d, color c, PVector vel) {
@@ -20,20 +20,28 @@ class Face {
     this.c=c;
     this.velocity = vel;
     this.r_1 = r*20/19;
-    this.mass = this.diameter*this.r_1/200;
+    this.mass = r;
     this.acceleration = new PVector(0,0);
     
   }
   
   public void setPosition(PVector position) {
     this.position = position;
+    this.velocity = new PVector(0,0);
   }
     
+ public float getX() {
+   return position.x;
+ }
+ 
+ public float getY() {
+   return position.y;
+ }
   
   public void setMass(float newDiameter) {
     this.diameter = newDiameter;
     this.r_1=this.diameter/2;
-    this.mass = this.diameter*this.r_1/800;
+    this.mass = r_1;
     
   }
   
@@ -47,18 +55,18 @@ class Face {
   }
 
   public void applyForce(PVector force) {
+
     PVector temp = this.velocity.copy();
-    temp = temp.mult(200/diameter);
-    this.acceleration = force.div(this.mass); 
-    this.velocity.add(acceleration);
-    if (this.velocity.x>5000/diameter ||
-        this.velocity.y>5000/diameter ||
-        this.velocity.x<(-1)*5000/diameter ||
-        this.velocity.y<(-1)*5000/diameter) {
+    //temp = temp.mult(200/diameter);
+    acceleration = force.div(this.mass); 
+    velocity.add(acceleration);
+    if (this.velocity.x>5*200/diameter ||
+        this.velocity.y>5*200/diameter ||
+        this.velocity.x<-5*200/diameter ||
+        this.velocity.y<-5*200/diameter) {
+          println("normalization");
           velocity = temp;
     }
-    
-    println(velocity);
     
   }
 
